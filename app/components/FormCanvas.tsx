@@ -1,16 +1,24 @@
 "use client";
 
-import CanvasField from "./CanvasField";
+import { useDroppable } from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 import { useFormBuilderStore } from "@/store/form-builder.store";
+import SortableCanvasField from "./SortableCanvasField";
 
 const FormCanvas = () => {
   const fields = useFormBuilderStore((state) => state.fields);
   const selectedFieldId = useFormBuilderStore((state) => state.selectedFieldId);
   const selectField = useFormBuilderStore((state) => state.selectField);
+  const { setNodeRef } = useDroppable({
+    id: "form-canvas",
+  });
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" ref={setNodeRef}>
       <h2 className="font-bold text-xl">Form Canvas</h2>
 
       {fields.length === 0 && (
@@ -19,14 +27,19 @@ const FormCanvas = () => {
         </div>
       )}
 
-      {fields.map((field) => (
-        <CanvasField
-          key={field.id}
-          field={field}
-          selected={selectedFieldId === field.id}
-          onClick={() => selectField(field.id)}
-        />
-      ))}
+      <SortableContext
+        items={fields.map((f) => f.id)}
+        strategy={verticalListSortingStrategy}
+      >
+        {fields.map((field) => (
+          <SortableCanvasField
+            key={field.id}
+            field={field}
+            selected={selectedFieldId === field.id}
+            onClick={() => selectField(field.id)}
+          />
+        ))}
+      </SortableContext>
     </div>
   );
 };
