@@ -18,26 +18,22 @@ export interface BaseField {
 
 export interface TextField extends BaseField {
   type: "text";
-
   placeholder?: string;
   defaultValue?: string;
 }
 
 export interface TextAreaField extends BaseField {
   type: "textarea";
-
   placeholder?: string;
 }
 
 export interface CheckboxField extends BaseField {
   type: "checkbox";
-
   checked?: boolean;
 }
 
 export interface RadioField extends BaseField {
   type: "radio";
-
   options: {
     label: string;
     value: string;
@@ -46,7 +42,6 @@ export interface RadioField extends BaseField {
 
 export interface SelectField extends BaseField {
   type: "select";
-
   options: {
     label: string;
     value: string;
@@ -55,7 +50,6 @@ export interface SelectField extends BaseField {
 
 export interface ButtonField extends BaseField {
   type: "button";
-
   text: string;
 }
 
