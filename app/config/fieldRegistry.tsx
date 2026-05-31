@@ -104,7 +104,62 @@ export const fieldRegistry: FieldRegistry = {
 
   checkbox: {
     label: "Checkbox",
-    render: () => <input disabled type="checkbox" />,
+    render: (field) => (
+      <label className="flex items-center gap-2">
+        <input disabled type="checkbox" />
+        {"text" in field ? field.text : "Checkbox option"}
+      </label>
+    ),
+    renderProperties: (field, updateField) => (
+      <div className="space-y-4">
+        <PropertyField label="Label">
+          <input
+            className="w-full rounded border p-2"
+            value={field.label}
+            onChange={(e) =>
+              updateField(field.id, {
+                label: e.target.value,
+              })
+            }
+          />
+        </PropertyField>
+
+        <PropertyField label="Checkbox Text">
+          <input
+            className="w-full rounded border p-2"
+            value={"text" in field ? field.text : ""}
+            onChange={(e) => updateField(field.id, { text: e.target.value })}
+          />
+        </PropertyField>
+
+        <PropertyField label="Required">
+          <input
+            type="checkbox"
+            checked={field.required ?? false}
+            onChange={(e) =>
+              updateField(field.id, {
+                required: e.target.checked,
+              })
+            }
+          />
+        </PropertyField>
+      </div>
+    ),
+  },
+
+  checkboxGroup: {
+    label: "Checkbox Group",
+    render: (field) => (
+      <div className="space-y-2">
+        {"options" in field &&
+          field.options.map((option) => (
+            <label key={option.value} className="flex items-center gap-2">
+              <input disabled type="checkbox" />
+              {option.label}
+            </label>
+          ))}
+      </div>
+    ),
     renderProperties: (field, updateField) => (
       <div className="space-y-4">
         <PropertyField label="Label">

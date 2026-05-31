@@ -2,6 +2,7 @@ export type FieldType =
   | "text"
   | "textarea"
   | "checkbox"
+  | "checkboxGroup"
   | "radio"
   | "select"
   | "button";
@@ -30,6 +31,16 @@ export interface TextAreaField extends BaseField {
 export interface CheckboxField extends BaseField {
   type: "checkbox";
   checked?: boolean;
+  text?: string;
+}
+
+export interface CheckboxGroupField extends BaseField {
+  type: "checkboxGroup";
+  options: {
+    label: string;
+    value: string;
+    checked?: boolean;
+  }[];
 }
 
 export interface RadioField extends BaseField {
@@ -57,6 +68,7 @@ export type FormField =
   | TextField
   | TextAreaField
   | CheckboxField
+  | CheckboxGroupField
   | RadioField
   | SelectField
   | ButtonField;

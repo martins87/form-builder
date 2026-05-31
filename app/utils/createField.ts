@@ -32,7 +32,21 @@ export function createField(type: FieldType): FormField {
         type,
         label: "Checkbox",
         name: `checkbox_${id}`,
+        text: "I agree to the terms",
         required: false,
+      };
+
+    case "checkboxGroup":
+      return {
+        id,
+        type,
+        label: "Checkbox Group",
+        name: `checkboxGroup_${id}`,
+        required: false,
+        options: [
+          { label: "Option 1", value: "option1", checked: false },
+          { label: "Option 2", value: "option2", checked: false },
+        ],
       };
 
     case "radio":
