@@ -1,5 +1,6 @@
 "use client";
 
+import { fieldRegistry } from "@/config/fieldRegistry";
 import { FormField } from "@/types/form-fields";
 
 interface Props {
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const CanvasField = ({ field, selected, onClick }: Props) => {
+  const renderer = fieldRegistry[field.type].render;
+
   return (
     <div
       onClick={onClick}
@@ -21,37 +24,7 @@ const CanvasField = ({ field, selected, onClick }: Props) => {
         {field.required && "*"}
       </label>
 
-      {field.type === "text" && (
-        <input
-          disabled
-          className="w-full rounded border p-2"
-          placeholder={field.placeholder}
-        />
-      )}
-
-      {field.type === "textarea" && (
-        <textarea
-          disabled
-          className="w-full rounded border p-2"
-          placeholder={field.placeholder}
-        />
-      )}
-
-      {field.type === "checkbox" && <input disabled type="checkbox" />}
-
-      {field.type === "select" && (
-        <select disabled className="w-full rounded border p-2">
-          {field.options.map((option) => (
-            <option key={option.value}>{option.label}</option>
-          ))}
-        </select>
-      )}
-
-      {field.type === "button" && (
-        <button disabled className="rounded bg-black px-4 py-2 text-white">
-          {field.text}
-        </button>
-      )}
+      {renderer(field)}
     </div>
   );
 };
