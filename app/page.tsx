@@ -4,13 +4,13 @@ import {
   DndContext,
   DragEndEvent,
   PointerSensor,
-  closestCenter,
+  pointerWithin,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import CenterPanel from "@/components/CenterPanel";
-import LeftPanel from "@/components/Leftpanel";
-import RightPanel from "@/components/RightPanel";
+import CenterPanel from "@/components/ui/CenterPanel";
+import LeftPanel from "@/components/ui/Leftpanel";
+import RightPanel from "@/components/ui/RightPanel";
 import FieldPalette from "@/components/FieldPalette";
 import FormCanvas from "@/components/FormCanvas";
 import PropertyEditor from "@/components/PropertyEditor";
@@ -19,6 +19,7 @@ import { useFormBuilderStore } from "./store/form-builder.store";
 export default function Home() {
   const addField = useFormBuilderStore((state) => state.addField);
   const moveField = useFormBuilderStore((state) => state.moveField);
+  const fields = useFormBuilderStore((state) => state.fields);
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -27,10 +28,16 @@ export default function Home() {
 
     const source = active.data.current?.source;
 
-    if (source === "palette" && over.id === "form-canvas") {
-      addField(active.data.current?.type);
+    // Check if dropping from palette
+    if (source === "palette") {
+      // Accept drop on canvas OR on any existing field
+      const isDropOnCanvas = over.id === "form-canvas";
+      const isDropOnField = fields.some((f) => f.id === over.id);
 
-      return;
+      if (isDropOnCanvas || isDropOnField) {
+        addField(active.data.current?.type);
+        return;
+      }
     }
 
     if (active.id !== over.id) {
@@ -49,7 +56,7 @@ export default function Home() {
   return (
     <DndContext
       sensors={sensors}
-      collisionDetection={closestCenter}
+      collisionDetection={pointerWithin}
       onDragEnd={handleDragEnd}
     >
       <div className="flex h-screen">
