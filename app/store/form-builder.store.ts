@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
 import { createField } from "@/utils/createField";
-import { FormField, Field } from "@/types/form-fields";
+import { FormField, FieldType } from "@/types/form-fields";
 
 interface FormBuilderStore {
   fields: FormField[];
   selectedFieldId: string | null;
-  addField: (type: Field) => void;
+  addField: (type: FieldType) => void;
   selectField: (id: string) => void;
   updateField: (id: string, updates: Partial<FormField>) => void;
 }

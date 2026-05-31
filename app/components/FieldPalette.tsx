@@ -2,7 +2,7 @@
 
 import { fieldRegistry } from "@/config/fieldRegistry";
 import { useFormBuilderStore } from "@/store/form-builder.store";
-import { Field } from "@/types/form-fields";
+import { FieldType } from "@/types/form-fields";
 
 const FieldPalette = () => {
   const addField = useFormBuilderStore((state) => state.addField);
@@ -11,7 +11,7 @@ const FieldPalette = () => {
     <div className="space-y-3">
       <h2 className="font-bold text-lg">Elements</h2>
 
-      {(Object.entries(fieldRegistry) as [Field, { label: string }][]).map(
+      {(Object.entries(fieldRegistry) as [FieldType, { label: string }][]).map(
         ([type, config]) => (
           <button
             key={type}

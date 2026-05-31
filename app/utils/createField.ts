@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { Field, FormField } from "@/types/form-fields";
+import { FieldType, FormField } from "@/types/form-fields";
 
-export function createField(type: Field): FormField {
+export function createField(type: FieldType): FormField {
   const id = uuidv4();
 
   switch (type) {

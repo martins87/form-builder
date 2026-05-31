@@ -1,4 +1,4 @@
-export type Field =
+export type FieldType =
   | "text"
   | "textarea"
   | "checkbox"
@@ -8,7 +8,7 @@ export type Field =
 
 export interface BaseField {
   id: string;
-  type: Field;
+  type: FieldType;
 
   label: string;
   name: string;

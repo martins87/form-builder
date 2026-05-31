@@ -1,7 +1,7 @@
-import { Field } from "@/types/form-fields";
+import { FieldType } from "@/types/form-fields";
 
 export const fieldRegistry: Record<
-  Field,
+  FieldType,
   {
     label: string;
   }
