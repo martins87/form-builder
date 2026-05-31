@@ -14,6 +14,7 @@ import RightPanel from "@/components/ui/RightPanel";
 import FieldPalette from "@/components/FieldPalette";
 import FormCanvas from "@/components/FormCanvas";
 import PropertyEditor from "@/components/PropertyEditor";
+import GetCodeButton from "@/components/GetCodeButton";
 import { useFormBuilderStore } from "./store/form-builder.store";
 
 export default function Home() {
@@ -62,6 +63,7 @@ export default function Home() {
       <div className="flex h-screen">
         <LeftPanel>
           <FieldPalette />
+          <GetCodeButton />
         </LeftPanel>
 
         <CenterPanel>

@@ -19,7 +19,9 @@ const FormCanvas = () => {
 
   return (
     <div className="space-y-4 min-h-full" ref={setNodeRef}>
-      <h2 className="font-bold text-xl">Form Canvas</h2>
+      <h2 className="font-bold text-xl">
+        Form Canvas (Click on field to edit)
+      </h2>
 
       {fields.length === 0 && (
         <div className="rounded-lg border-2 border-dashed p-12 text-center text-gray-500">
