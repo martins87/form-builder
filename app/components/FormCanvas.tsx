@@ -21,7 +21,7 @@ const FormCanvas = () => {
   return (
     <div className="min-h-full space-y-4" ref={setNodeRef}>
       <div>
-        <h2 className="text-lg font-bold">Form Canvas</h2>
+        <h2 className="text-xl font-bold">Form Canvas</h2>
         <p className="text-sm text-gray-500">(Click a field to select)</p>
       </div>
 
