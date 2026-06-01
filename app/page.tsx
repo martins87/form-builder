@@ -60,7 +60,7 @@ export default function Home() {
       collisionDetection={pointerWithin}
       onDragEnd={handleDragEnd}
     >
-      <div className="flex h-screen">
+      <div className="flex h-screen gap-4 p-4">
         <LeftPanel>
           <FieldPalette />
           <GetCodeButton />
