@@ -19,7 +19,7 @@ const GetCodeButton = () => {
     <>
       <button
         onClick={handleClick}
-        className="flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-3 text-sm font-medium text-white hover:bg-emerald-600 hover:cursor-pointer"
+        className="flex items-center gap-2 rounded-lg bg-[#1D9E99] px-4 py-3 text-sm font-medium text-white hover:bg-[#1D9E99]/90 hover:cursor-pointer"
       >
         <svg
           className="h-4 w-4"

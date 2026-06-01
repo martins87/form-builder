@@ -7,7 +7,7 @@ export const fieldRegistry: FieldRegistry = {
     render: (field) => (
       <input
         disabled
-        className="w-full rounded border p-2"
+        className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
         placeholder={"placeholder" in field ? field.placeholder : ""}
       />
     ),
@@ -15,7 +15,7 @@ export const fieldRegistry: FieldRegistry = {
       <div className="space-y-4">
         <PropertyField label="Label">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50  p-2"
             value={field.label}
             onChange={(e) =>
               updateField(field.id, {
@@ -27,7 +27,7 @@ export const fieldRegistry: FieldRegistry = {
 
         <PropertyField label="Placeholder">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
             value={"placeholder" in field ? (field.placeholder ?? "") : ""}
             onChange={(e) =>
               updateField(field.id, {
@@ -57,7 +57,7 @@ export const fieldRegistry: FieldRegistry = {
     render: (field) => (
       <textarea
         disabled
-        className="w-full rounded border p-2"
+        className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
         placeholder={"placeholder" in field ? field.placeholder : ""}
       />
     ),
@@ -65,7 +65,7 @@ export const fieldRegistry: FieldRegistry = {
       <div className="space-y-4">
         <PropertyField label="Label">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
             value={field.label}
             onChange={(e) =>
               updateField(field.id, {
@@ -77,7 +77,7 @@ export const fieldRegistry: FieldRegistry = {
 
         <PropertyField label="Placeholder">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
             value={"placeholder" in field ? (field.placeholder ?? "") : ""}
             onChange={(e) =>
               updateField(field.id, {
@@ -114,7 +114,7 @@ export const fieldRegistry: FieldRegistry = {
       <div className="space-y-4">
         <PropertyField label="Label">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
             value={field.label}
             onChange={(e) =>
               updateField(field.id, {
@@ -126,7 +126,7 @@ export const fieldRegistry: FieldRegistry = {
 
         <PropertyField label="Checkbox Text">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
             value={"text" in field ? field.text : ""}
             onChange={(e) => updateField(field.id, { text: e.target.value })}
           />
@@ -164,7 +164,7 @@ export const fieldRegistry: FieldRegistry = {
       <div className="space-y-4">
         <PropertyField label="Label">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
             value={field.label}
             onChange={(e) =>
               updateField(field.id, {
@@ -207,7 +207,7 @@ export const fieldRegistry: FieldRegistry = {
       <div className="space-y-4">
         <PropertyField label="Label">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
             value={field.label}
             onChange={(e) =>
               updateField(field.id, {
@@ -235,7 +235,10 @@ export const fieldRegistry: FieldRegistry = {
   select: {
     label: "Select",
     render: (field) => (
-      <select disabled className="w-full rounded border p-2">
+      <select
+        disabled
+        className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
+      >
         {"options" in field &&
           field.options.map((option) => (
             <option key={option.value}>{option.label}</option>
@@ -246,7 +249,7 @@ export const fieldRegistry: FieldRegistry = {
       <div className="space-y-4">
         <PropertyField label="Label">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
             value={field.label}
             onChange={(e) =>
               updateField(field.id, {
@@ -274,7 +277,7 @@ export const fieldRegistry: FieldRegistry = {
   button: {
     label: "Button",
     render: (field) => (
-      <button disabled className="rounded bg-black px-4 py-2 text-white">
+      <button disabled className="rounded-lg bg-[#1D9E99] px-4 py-2 text-white">
         {"text" in field ? field.text : "Button"}
       </button>
     ),
@@ -282,7 +285,7 @@ export const fieldRegistry: FieldRegistry = {
       <div className="space-y-4">
         <PropertyField label="Label">
           <input
-            className="w-full rounded border p-2"
+            className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
             value={field.label}
             onChange={(e) =>
               updateField(field.id, {
@@ -295,7 +298,7 @@ export const fieldRegistry: FieldRegistry = {
         {"text" in field && (
           <PropertyField label="Button Text">
             <input
-              className="w-full rounded border p-2"
+              className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
               value={field.text}
               onChange={(e) =>
                 updateField(field.id, {

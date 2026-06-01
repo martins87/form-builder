@@ -18,7 +18,7 @@ const CanvasField = ({ field, selected, onClick, onRemove }: Props) => {
     <div
       onClick={onClick}
       className={`group relative rounded-lg border p-4 transition hover:cursor-pointer
-        ${selected ? "border-blue-500" : "border-gray-300"}
+        ${selected ? "border-[#1D9E99]" : "border-gray-100"}
       `}
     >
       <RemoveFieldButton fieldLabel={field.label} onRemove={onRemove} />
