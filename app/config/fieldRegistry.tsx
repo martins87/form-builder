@@ -1,5 +1,6 @@
 import { FieldRegistry } from "@/types/field-registry";
 import PropertyField from "@/components/PropertyField";
+import ToggleSwitch from "@/components/ui/ToggleSwitch";
 
 export const fieldRegistry: FieldRegistry = {
   text: {
@@ -38,12 +39,11 @@ export const fieldRegistry: FieldRegistry = {
         </PropertyField>
 
         <PropertyField label="Required">
-          <input
-            type="checkbox"
+          <ToggleSwitch
             checked={field.required ?? false}
-            onChange={(e) =>
+            onChange={(checked) =>
               updateField(field.id, {
-                required: e.target.checked,
+                required: checked,
               })
             }
           />
@@ -88,12 +88,11 @@ export const fieldRegistry: FieldRegistry = {
         </PropertyField>
 
         <PropertyField label="Required">
-          <input
-            type="checkbox"
+          <ToggleSwitch
             checked={field.required ?? false}
-            onChange={(e) =>
+            onChange={(checked) =>
               updateField(field.id, {
-                required: e.target.checked,
+                required: checked,
               })
             }
           />
@@ -133,12 +132,11 @@ export const fieldRegistry: FieldRegistry = {
         </PropertyField>
 
         <PropertyField label="Required">
-          <input
-            type="checkbox"
+          <ToggleSwitch
             checked={field.required ?? false}
-            onChange={(e) =>
+            onChange={(checked) =>
               updateField(field.id, {
-                required: e.target.checked,
+                required: checked,
               })
             }
           />
@@ -175,12 +173,11 @@ export const fieldRegistry: FieldRegistry = {
         </PropertyField>
 
         <PropertyField label="Required">
-          <input
-            type="checkbox"
+          <ToggleSwitch
             checked={field.required ?? false}
-            onChange={(e) =>
+            onChange={(checked) =>
               updateField(field.id, {
-                required: e.target.checked,
+                required: checked,
               })
             }
           />
@@ -218,12 +215,11 @@ export const fieldRegistry: FieldRegistry = {
         </PropertyField>
 
         <PropertyField label="Required">
-          <input
-            type="checkbox"
+          <ToggleSwitch
             checked={field.required ?? false}
-            onChange={(e) =>
+            onChange={(checked) =>
               updateField(field.id, {
-                required: e.target.checked,
+                required: checked,
               })
             }
           />
@@ -260,12 +256,11 @@ export const fieldRegistry: FieldRegistry = {
         </PropertyField>
 
         <PropertyField label="Required">
-          <input
-            type="checkbox"
+          <ToggleSwitch
             checked={field.required ?? false}
-            onChange={(e) =>
+            onChange={(checked) =>
               updateField(field.id, {
-                required: e.target.checked,
+                required: checked,
               })
             }
           />
