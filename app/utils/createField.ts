@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { FieldType, FormField } from "@/types/form-fields";
 
 export function createField(type: FieldType): FormField {
-  const id = uuidv4();
+  const id = uuidv4().replace(/-/g, "_");
 
   switch (type) {
     case "text":
