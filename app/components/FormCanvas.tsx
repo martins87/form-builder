@@ -19,14 +19,14 @@ const FormCanvas = () => {
   });
 
   return (
-    <div className="min-h-full space-y-4" ref={setNodeRef}>
+    <div className="flex min-h-full flex-col gap-4" ref={setNodeRef}>
       <div>
         <h2 className="text-xl font-bold">Form Canvas</h2>
         <p className="text-sm text-gray-500">(Click a field to select)</p>
       </div>
 
       {fields.length === 0 && (
-        <div className="rounded-lg border-2 border-dashed p-12 text-center text-gray-500">
+        <div className="flex flex-1 items-center justify-center rounded-lg border-2 border-dashed text-center text-gray-500 mb-2">
           Drag and drop elements from the left panel
         </div>
       )}

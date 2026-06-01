@@ -10,7 +10,11 @@ const PropertyEditor = () => {
   const selectedField = fields.find((field) => field.id === selectedFieldId);
 
   if (!selectedField) {
-    return <div>Select a field</div>;
+    return (
+      <div>
+        <h2 className="font-bold text-xl">Select a field to start editing</h2>
+      </div>
+    );
   }
 
   return (
