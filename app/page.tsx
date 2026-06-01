@@ -8,6 +8,7 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
+
 import CenterPanel from "@/components/ui/CenterPanel";
 import LeftPanel from "@/components/ui/Leftpanel";
 import RightPanel from "@/components/ui/RightPanel";
@@ -60,7 +61,7 @@ export default function Home() {
       collisionDetection={pointerWithin}
       onDragEnd={handleDragEnd}
     >
-      <div className="flex h-screen gap-4 p-4">
+      <div className="flex min-h-screen gap-4 p-4 overflow-y-auto">
         <LeftPanel>
           <FieldPalette />
           <GetCodeButton />
