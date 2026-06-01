@@ -1,13 +1,13 @@
 import { FieldRegistry } from "@/types/field-registry";
 import PropertyField from "@/components/PropertyField";
 import ToggleSwitch from "@/components/ui/ToggleSwitch";
+import OptionsEditor from "@/components/OptionsEditor";
 
 export const fieldRegistry: FieldRegistry = {
   text: {
     label: "Text Input",
     render: (field) => (
       <input
-        disabled
         className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
         placeholder={"placeholder" in field ? field.placeholder : ""}
       />
@@ -56,7 +56,6 @@ export const fieldRegistry: FieldRegistry = {
     label: "Textarea",
     render: (field) => (
       <textarea
-        disabled
         className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
         placeholder={"placeholder" in field ? field.placeholder : ""}
       />
@@ -105,7 +104,7 @@ export const fieldRegistry: FieldRegistry = {
     label: "Checkbox",
     render: (field) => (
       <label className="flex items-center gap-2">
-        <input disabled type="checkbox" />
+        <input type="checkbox" />
         {"text" in field ? field.text : "Checkbox option"}
       </label>
     ),
@@ -152,7 +151,7 @@ export const fieldRegistry: FieldRegistry = {
         {"options" in field &&
           field.options.map((option) => (
             <label key={option.value} className="flex items-center gap-2">
-              <input disabled type="checkbox" />
+              <input type="checkbox" />
               {option.label}
             </label>
           ))}
@@ -171,6 +170,15 @@ export const fieldRegistry: FieldRegistry = {
             }
           />
         </PropertyField>
+
+        {"options" in field && (
+          <PropertyField label="Options">
+            <OptionsEditor
+              options={field.options}
+              onChange={(options) => updateField(field.id, { options })}
+            />
+          </PropertyField>
+        )}
 
         <PropertyField label="Required">
           <ToggleSwitch
@@ -193,8 +201,7 @@ export const fieldRegistry: FieldRegistry = {
         {"options" in field &&
           field.options.map((option) => (
             <label key={option.value} className="block">
-              <input disabled type="radio" className="mr-2" />
-
+              <input type="radio" className="mr-2" />
               {option.label}
             </label>
           ))}
@@ -214,6 +221,15 @@ export const fieldRegistry: FieldRegistry = {
           />
         </PropertyField>
 
+        {"options" in field && (
+          <PropertyField label="Options">
+            <OptionsEditor
+              options={field.options}
+              onChange={(options) => updateField(field.id, { options })}
+            />
+          </PropertyField>
+        )}
+
         <PropertyField label="Required">
           <ToggleSwitch
             checked={field.required ?? false}
@@ -231,10 +247,7 @@ export const fieldRegistry: FieldRegistry = {
   select: {
     label: "Select",
     render: (field) => (
-      <select
-        disabled
-        className="w-full rounded-lg border border-[#1D9E99]/50 p-2"
-      >
+      <select className="w-full rounded-lg border border-[#1D9E99]/50 p-2">
         {"options" in field &&
           field.options.map((option) => (
             <option key={option.value}>{option.label}</option>
@@ -254,6 +267,15 @@ export const fieldRegistry: FieldRegistry = {
             }
           />
         </PropertyField>
+
+        {"options" in field && (
+          <PropertyField label="Options">
+            <OptionsEditor
+              options={field.options}
+              onChange={(options) => updateField(field.id, { options })}
+            />
+          </PropertyField>
+        )}
 
         <PropertyField label="Required">
           <ToggleSwitch
