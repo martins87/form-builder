@@ -22,7 +22,9 @@ const FormCanvas = () => {
     <div className="flex min-h-full flex-col gap-4" ref={setNodeRef}>
       <div>
         <h2 className="text-xl font-bold">Form Canvas</h2>
-        <p className="text-sm text-gray-500">(Click a field to select)</p>
+        <p className="text-sm text-gray-500">
+          Click on a field to edit it. Grab to reorder fields in the form.
+        </p>
       </div>
 
       {fields.length === 0 && (
