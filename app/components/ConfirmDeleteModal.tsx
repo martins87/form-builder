@@ -31,16 +31,16 @@ const ConfirmDeleteModal = ({
           Are you sure you want to remove &quot;{fieldLabel}&quot;? This action
           cannot be undone.
         </p>
-        <div className="flex justify-end gap-3">
+        <div className="flex justify-end gap-2">
           <button
             onClick={onCancel}
-            className="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:cursor-pointer"
+            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:cursor-pointer"
           >
             Cancel
           </button>
           <button
             onClick={onConfirm}
-            className="rounded bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 hover:cursor-pointer"
+            className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 hover:cursor-pointer"
           >
             Remove
           </button>

@@ -27,12 +27,12 @@ const CodePreview = ({ code, isOpen, onClose }: CodePreviewProps) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75">
       <div className="relative mx-4 flex max-h-[80vh] w-full max-w-3xl flex-col rounded-lg bg-white shadow-xl">
         {/* Header */}
-        <div className="flex items-center justify-between border-b p-4">
+        <div className="flex items-center justify-between border-b border-b-neutral-200 p-4">
           <h2 className="text-lg font-semibold">Generated Form Code</h2>
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopy}
-              className="flex items-center gap-2 rounded bg-blue-600 px-3 py-1.5 text-sm text-white hover:bg-blue-700 hover:cursor-pointer"
+              className="flex items-center gap-2 rounded-lg bg-[#1D9E99] px-3 py-2 text-sm text-white hover:bg-[#1D9E99]/70 hover:cursor-pointer"
             >
               {copied ? (
                 <>
@@ -99,7 +99,7 @@ const CodePreview = ({ code, isOpen, onClose }: CodePreviewProps) => {
         </div>
 
         {/* Footer */}
-        <div className="border-t p-4 text-sm text-gray-500">
+        <div className="border-t border-t-neutral-200 p-4 text-sm text-gray-500">
           Save this code as a{" "}
           <code className="rounded bg-gray-100 px-1">.tsx</code> file in your
           React project.
