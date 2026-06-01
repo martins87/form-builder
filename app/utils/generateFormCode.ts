@@ -4,7 +4,7 @@ export function generateFormCode(fields: FormField[]): string {
   if (fields.length === 0) {
     return `"use client";
 
-export default function GeneratedForm() {
+export default function App() {
   return (
     <form className="space-y-4 p-4">
       <p className="text-gray-500">No fields added yet.</p>
@@ -45,7 +45,7 @@ export default function GeneratedForm() {
 
 import { useState, FormEvent } from "react";
 
-export default function GeneratedForm() {
+export default function App() {
   const [formData, setFormData] = useState({
 ${initialState}
   });
@@ -56,7 +56,7 @@ ${initialState}
 
   const handleCheckboxGroupChange = (name: string, value: string, checked: boolean) => {
     setFormData((prev) => {
-      const currentValues = prev[name as keyof typeof prev] as string[];
+      const currentValues = prev[name as keyof typeof prev] as unknown as string[];
       if (checked) {
         return { ...prev, [name]: [...currentValues, value] };
       } else {
