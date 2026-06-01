@@ -41,6 +41,24 @@ export default function App() {
   // Generate form fields JSX
   const fieldsJsx = fields.map((field) => generateFieldJsx(field)).join("\n\n");
 
+  // Check if we need the handleCheckboxGroupChange function
+  const hasCheckboxGroup = fields.some((f) => f.type === "checkboxGroup");
+
+  const checkboxGroupHandler = hasCheckboxGroup
+    ? `
+  const handleCheckboxGroupChange = (name: string, value: string, checked: boolean) => {
+    setFormData((prev) => {
+      const currentValues = prev[name as keyof typeof prev] as unknown as string[];
+      if (checked) {
+        return { ...prev, [name]: [...currentValues, value] };
+      } else {
+        return { ...prev, [name]: currentValues.filter((v) => v !== value) };
+      }
+    });
+  };
+`
+    : "";
+
   return `"use client";
 
 import { useState, FormEvent } from "react";
@@ -53,18 +71,7 @@ ${initialState}
   const handleChange = (name: string, value: string | boolean | string[]) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
-  const handleCheckboxGroupChange = (name: string, value: string, checked: boolean) => {
-    setFormData((prev) => {
-      const currentValues = prev[name as keyof typeof prev] as unknown as string[];
-      if (checked) {
-        return { ...prev, [name]: [...currentValues, value] };
-      } else {
-        return { ...prev, [name]: currentValues.filter((v) => v !== value) };
-      }
-    });
-  };
-
+${checkboxGroupHandler}
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
