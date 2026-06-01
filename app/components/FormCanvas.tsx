@@ -13,19 +13,20 @@ const FormCanvas = () => {
   const fields = useFormBuilderStore((state) => state.fields);
   const selectedFieldId = useFormBuilderStore((state) => state.selectedFieldId);
   const selectField = useFormBuilderStore((state) => state.selectField);
+  const removeField = useFormBuilderStore((state) => state.removeField);
   const { setNodeRef } = useDroppable({
     id: "form-canvas",
   });
 
   return (
-    <div className="space-y-4 min-h-full" ref={setNodeRef}>
-      <h2 className="font-bold text-xl">
+    <div className="min-h-full space-y-4" ref={setNodeRef}>
+      <h2 className="text-xl font-bold">
         Form Canvas (Click on field to edit)
       </h2>
 
       {fields.length === 0 && (
         <div className="rounded-lg border-2 border-dashed p-12 text-center text-gray-500">
-          Add elements from the left panel
+          Drag and drop elements from the left panel
         </div>
       )}
 
@@ -39,6 +40,7 @@ const FormCanvas = () => {
             field={field}
             selected={selectedFieldId === field.id}
             onClick={() => selectField(field.id)}
+            onRemove={() => removeField(field.id)}
           />
         ))}
       </SortableContext>

@@ -10,9 +10,10 @@ interface Props {
   field: FormField;
   selected: boolean;
   onClick: () => void;
+  onRemove: () => void;
 }
 
-const SortableCanvasField = ({ field, selected, onClick }: Props) => {
+const SortableCanvasField = ({ field, selected, onClick, onRemove }: Props) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
       id: field.id,
@@ -25,7 +26,12 @@ const SortableCanvasField = ({ field, selected, onClick }: Props) => {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <CanvasField field={field} selected={selected} onClick={onClick} />
+      <CanvasField
+        field={field}
+        selected={selected}
+        onClick={onClick}
+        onRemove={onRemove}
+      />
     </div>
   );
 };

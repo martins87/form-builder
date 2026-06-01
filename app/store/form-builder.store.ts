@@ -11,6 +11,7 @@ interface FormBuilderStore {
   selectField: (id: string) => void;
   updateField: (id: string, updates: Partial<FormField>) => void;
   moveField: (activeId: string, overId: string) => void;
+  removeField: (id: string) => void;
 }
 
 export const useFormBuilderStore = create<FormBuilderStore>((set) => ({
@@ -50,4 +51,11 @@ export const useFormBuilderStore = create<FormBuilderStore>((set) => ({
         fields: arrayMove(state.fields, oldIndex, newIndex),
       };
     }),
+
+  removeField: (id) =>
+    set((state) => ({
+      fields: state.fields.filter((field) => field.id !== id),
+      selectedFieldId:
+        state.selectedFieldId === id ? null : state.selectedFieldId,
+    })),
 }));
